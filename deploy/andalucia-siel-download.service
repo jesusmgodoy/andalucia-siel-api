@@ -1,0 +1,36 @@
+[Unit]
+Description=Archivo de resultados SIEL de Andalucía y referendos
+Wants=network-online.target
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/elecciones-andalucia
+ExecStart=/home/ubuntu/elecciones-andalucia/.venv/bin/python -u /home/ubuntu/elecciones-andalucia/scripts/archive_siel.py --output /home/ubuntu/elecciones-andalucia/data --workers 6 --max-rps 6 --reserve-gib 20
+Restart=on-failure
+RestartSec=300
+TimeoutStopSec=90
+KillMode=control-group
+Nice=10
+CPUQuota=150%
+MemoryHigh=1500M
+MemoryMax=2G
+TasksMax=64
+IOSchedulingClass=idle
+IOWeight=10
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/ubuntu/elecciones-andalucia/data /home/ubuntu/elecciones-andalucia/logs
+Environment=PYTHONDONTWRITEBYTECODE=1
+StandardOutput=append:/home/ubuntu/elecciones-andalucia/logs/download.log
+StandardError=append:/home/ubuntu/elecciones-andalucia/logs/download.log
+
+[Install]
+WantedBy=multi-user.target

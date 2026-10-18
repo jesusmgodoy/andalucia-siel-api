@@ -1,0 +1,1285 @@
+{
+  "paths": {
+    "/v1/celectos": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/escrutinio/ambito/cautonoma": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/escrutinio/ambito/distrito": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "description": "Clave del municipio",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "distrito",
+            "in": "query",
+            "description": "Clave del distrito",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/escrutinio/ambito/mesa": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "description": "Clave del municipio",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "distrito",
+            "in": "query",
+            "description": "Clave del distrito",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "seccion",
+            "in": "query",
+            "description": "Clave de la seccion",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mesa",
+            "in": "query",
+            "description": "Clave de la mesa",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/escrutinio/ambito/municipio": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "description": "Clave del municipio",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/escrutinio/ambito/provincia": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/escrutinio/ambito/rausentes/cautonoma": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/escrutinio/ambito/rausentes/provincia": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/escrutinio/ambito/seccion": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "description": "Clave del municipio",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "distrito",
+            "in": "query",
+            "description": "Clave del distrito",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "seccion",
+            "in": "query",
+            "description": "Clave de la seccion",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/escrutinio/axml": {
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "escrutinio",
+            "description": "escrutinio",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Escrutinio"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/escrutinio/partido/cautonoma": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "partido",
+            "in": "query",
+            "description": "Clave del partido",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/escrutinio/partido/municipio": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "description": "Clave del municipio",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "partido",
+            "in": "query",
+            "description": "Clave del partido",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/escrutinio/partido/provincia": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "partido",
+            "in": "query",
+            "description": "Clave del partido",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/opciones/axml": {
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "claveValor",
+            "description": "claveValor",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ClaveValor"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/v1/opciones/cautonoma": {
+      "get": {
+        "parameters": []
+      }
+    },
+    "/v1/opciones/distrito": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "description": "Clave del municipio",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/opciones/fconvocatoria": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/opciones/mesa": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "description": "Clave del municipio",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "distrito",
+            "in": "query",
+            "description": "Clave del distrito",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "seccion",
+            "in": "query",
+            "description": "Clave de la sección",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/opciones/municipio": {
+      "get": {
+        "parameters": [
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/opciones/partido/cautonoma": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/opciones/partido/municipio": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "description": "Clave del municipio",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/opciones/partido/provincia": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/opciones/provincia": {
+      "get": {
+        "parameters": [
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/opciones/seccion": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "description": "Clave del municipio",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "distrito",
+            "in": "query",
+            "description": "Clave del distrito",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/opciones/tconvocatoria": {
+      "get": {
+        "parameters": []
+      }
+    },
+    "/v1/resumen/axml": {
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "resumen",
+            "description": "resumen",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Resumen"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/resumen/cautonoma": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/resumen/distrito": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "description": "Clave del municipio",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "distrito",
+            "in": "query",
+            "description": "Clave del distrito",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/resumen/mesa": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "description": "Clave del municipio",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "distrito",
+            "in": "query",
+            "description": "Clave del distrito",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "seccion",
+            "in": "query",
+            "description": "Clave de la seccion",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "mesa",
+            "in": "query",
+            "description": "Clave de la mesa",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/v1/resumen/municipio": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "description": "Clave del municipio",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/resumen/provincia": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/resumen/rausentes/cautonoma": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/resumen/rausentes/provincia": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ]
+      }
+    },
+    "/v1/resumen/seccion": {
+      "get": {
+        "parameters": [
+          {
+            "name": "tconvocatoria",
+            "in": "query",
+            "description": "Clave del tipo de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "fconvocatoria",
+            "in": "query",
+            "description": "Clave de la fecha de convocatoria",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "cautonoma",
+            "in": "query",
+            "description": "Clave de la comunidad autónoma",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "provincia",
+            "in": "query",
+            "description": "Clave de la provincia",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "municipio",
+            "in": "query",
+            "description": "Clave del municipio",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "distrito",
+            "in": "query",
+            "description": "Clave del distrito",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "seccion",
+            "in": "query",
+            "description": "Clave de la seccion",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    }
+  }
+}

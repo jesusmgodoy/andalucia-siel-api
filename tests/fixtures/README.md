@@ -14,3 +14,8 @@ Los endpoints son `/v1/resumen/{ambito}` y
 `/v1/escrutinio/ambito/{ambito}`. En los registros de mesa se conservan también
 las URLs de origen. Estos casos son pruebas pequeñas, no un conjunto exhaustivo
 de resultados ni de incidencias.
+
+`archive_api_schema.json` conserva únicamente rutas y parámetros de la
+especificación SIEL consultada el 18-10-2026. Permite probar la normalización de
+consultas del archivo exhaustivo sin acceder a la red. Los resultados de
+`test_archive.py` son sintéticos; no representan votaciones reales.

@@ -95,6 +95,38 @@ conserva automáticamente el formato existente; no se mantienen dos copias del r
 Los lectores y la reconstrucción de CSV admiten ambos formatos. No conviertas un
 archivo existente dejando versiones comprimida y sin comprimir en la misma carpeta.
 
+## Archivo exhaustivo: Parlamento de Andalucía y referendos
+
+Para archivar todos los GET de datos y catálogos de ambos tipos, utiliza el
+[descargador exhaustivo](docs/archivo-exhaustivo.md):
+
+```sh
+python3 scripts/archive_siel.py --output ./data --workers 6 --max-rps 6
+```
+
+Descubre las convocatorias de Parlamento de Andalucía (tipo 5) y referendos
+(tipo 1). El 18 de octubre de 2026 eran 13 y 7, respectivamente. Primero descarga
+mesas, CERA y agregados de **todas** las convocatorias; después las distribuciones
+por candidatura y los reintentos transitorios. Genera CSV/NDJSON comprimidos tras
+la primera fase de cada convocatoria y actualiza su manifiesto al finalizar.
+No incluye los otros tipos electorales disponibles en la API.
+
+La reanudación es automática sobre SQLite, sin `--resume`. Reutiliza también la
+base creada por el anterior programa de la VPS, conservando respuestas y hashes.
+No mezcles esta carpeta con los NDJSON del descargador `download_mesas.py`.
+
+Consultar el estado sin hacer peticiones:
+
+```sh
+python3 scripts/archive_siel.py --output ./data --status
+```
+
+El trabajo se reparte por ámbitos pequeños con una cola de futuros limitada, de
+modo que las mesas de un mismo municipio pueden descargarse en paralelo. Se
+reutilizan conexiones y consultas; la compresión se realiza fuera del bloqueo de
+SQLite. El límite de peticiones y `Retry-After` evitan acelerar a costa de repetir
+errores de saturación. La latencia del origen puede seguir limitando el ritmo.
+
 ## Reanudación y ámbito
 
 ```sh
