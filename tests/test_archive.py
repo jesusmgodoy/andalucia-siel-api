@@ -457,5 +457,30 @@ class RecoveryTests(unittest.TestCase):
             self.assertEqual(delays, [10, 10])
             self.assertEqual(clock[0], 20)
             store.db.close()
+class StartupConcurrencyTests(unittest.TestCase):
+    def test_slow_andalucia_aggregate_does_not_block_provincial_work(self):
+        import threading
+        provincial_started = threading.Event()
+
+        class SlowRoot(FakeSession):
+            def get(self, url, timeout=None):
+                path = urlsplit(url).path
+                if path.endswith('/resumen/provincia'):
+                    provincial_started.set()
+                if path.endswith('/resumen/cautonoma'):
+                    if not provincial_started.wait(1):
+                        raise AssertionError('Las provincias esperan al agregado de Andalucía')
+                return super().get(url, timeout)
+
+        with tempfile.TemporaryDirectory() as td:
+            store = a.Archive(td, workers=4, rps=100000, reserve_gib=1)
+            store.paths = {path: methods['get'] for path, methods in DOC['paths'].items() if 'get' in methods}
+            provinces = [{'clave': p, 'valor': str(p)} for p in (4, 11, 14, 18, 21, 23, 29, 41)]
+            with patch.object(store, 'session', return_value=SlowRoot()):
+                store.download_core(5, 202605, provinces)
+            self.assertTrue(provincial_started.is_set())
+            self.assertEqual(store.totals()['mesas_completed'], 8)
+            store.db.close()
+
 if __name__ == '__main__':
     unittest.main()

@@ -435,7 +435,7 @@ class Archive:
         self.check_stop()
         self.node(level, params, context)
         self.pair(level, params)
-        if level == 'provincia':
+        if level in ('cautonoma', 'provincia'):
             self.pair(level, params, cera=True)
         child_level = {'provincia': 'municipio', 'municipio': 'distrito', 'distrito': 'seccion', 'seccion': 'mesa'}.get(level)
         if child_level is None:
@@ -461,10 +461,10 @@ class Archive:
         self.current = {'state': 'downloading', 'phase': 'core', 'tconvocatoria': t, 'fconvocatoria': f}
         self.progress()
         base = {'cautonoma': 1, 'tconvocatoria': t, 'fconvocatoria': f}
-        self.node('cautonoma', base, {'tconvocatoria': t, 'fconvocatoria': f})
-        self.pair('cautonoma', base)
-        self.pair('cautonoma', base, cera=True)
-        items = [('provincia', {**base, 'provincia': int(p['clave'])},
+        # Root aggregates share the pool with provinces. A slow Andalucía/CERA
+        # response must not keep every other worker idle at election startup.
+        items = [('cautonoma', base, {'tconvocatoria': t, 'fconvocatoria': f})]
+        items += [('provincia', {**base, 'provincia': int(p['clave'])},
                   {'tconvocatoria': t, 'fconvocatoria': f, 'provincia_clave': int(p['clave']), 'provincia_nombre': p['valor']})
                  for p in provinces]
         self.drain(items, self.core_node)

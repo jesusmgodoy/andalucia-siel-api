@@ -28,7 +28,9 @@ La planificación sigue este orden:
 4. Actualización final de exportaciones y manifiestos.
 
 Las tareas se reparten por provincia, municipio, distrito, sección y mesa. Un
-municipio grande puede ocupar varios trabajadores. Nunca hay más de dos futuros
+municipio grande puede ocupar varios trabajadores. Los agregados de Andalucía y
+CERA comparten la cola con las provincias desde el inicio, para que una respuesta
+lenta no deje inactivos al resto de trabajadores. Nunca hay más de dos futuros
 pendientes por trabajador; los trabajadores devuelven nuevos ámbitos al
 planificador y no esperan a otros futuros. Los fallos se guardan en SQLite y no
 ocupan un trabajador esperando su reintento durante la fase inicial.
