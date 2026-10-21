@@ -1,0 +1,215 @@
+{
+  "version": "datos-2026-10-21-v1",
+  "edition": "2026-10-21",
+  "scope": "Parlamento de Andalucía",
+  "source": "https://resultadoseleccionesandalucia.es/",
+  "source_legal": "https://resultadoseleccionesandalucia.es/aviso-legal.html",
+  "release_url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/tag/datos-2026-10-21-v1",
+  "all": {
+    "filename": "parlamento-andalucia-1982-2026.zip",
+    "bytes": 191577518,
+    "sha256": "47a2c90f46e216b5638d3be223c83ee1bb1994854d221485e69a61a3c9b3164e",
+    "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-1982-2026.zip"
+  },
+  "elections": [
+    {
+      "date": 202605,
+      "label": "17 de mayo de 2026",
+      "year": 2026,
+      "tables": 10403,
+      "quality": {
+        "ok": 10403
+      },
+      "failed_queries": 77,
+      "filename": "parlamento-andalucia-202605.zip",
+      "bytes": 17947015,
+      "sha256": "032709e4ecfe9c75133c5737d6c970c0d26ec1c1e03d3eace2dcd2380f99bc4c",
+      "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-202605.zip"
+    },
+    {
+      "date": 202206,
+      "label": "19 de junio de 2022",
+      "year": 2022,
+      "tables": 10189,
+      "quality": {
+        "ok": 10185,
+        "incompleto": 4
+      },
+      "failed_queries": 107,
+      "filename": "parlamento-andalucia-202206.zip",
+      "bytes": 18188219,
+      "sha256": "ac74b01b11a8a572fcd6ac5137685d1247e4f7f0c91b3f2d9ecb8fec4e6639a7",
+      "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-202206.zip"
+    },
+    {
+      "date": 201812,
+      "label": "2 de diciembre de 2018",
+      "year": 2018,
+      "tables": 10038,
+      "quality": {
+        "ok": 10035,
+        "incompleto": 2,
+        "inconsistente": 1
+      },
+      "failed_queries": 102,
+      "filename": "parlamento-andalucia-201812.zip",
+      "bytes": 17509414,
+      "sha256": "0be0d9222fbf19f0ce5b643fab3978b9aeddbc2eb49ceed1dddad903e6403908",
+      "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-201812.zip"
+    },
+    {
+      "date": 201503,
+      "label": "22 de marzo de 2015",
+      "year": 2015,
+      "tables": 9873,
+      "quality": {
+        "ok": 9871,
+        "incompleto": 2
+      },
+      "failed_queries": 102,
+      "filename": "parlamento-andalucia-201503.zip",
+      "bytes": 16860302,
+      "sha256": "2456368d9156295614a7095ffe0d1c4dd396d896c6f81b31a2b155c334afb69f",
+      "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-201503.zip"
+    },
+    {
+      "date": 201203,
+      "label": "25 de marzo de 2012",
+      "year": 2012,
+      "tables": 10631,
+      "quality": {
+        "ok": 10631
+      },
+      "failed_queries": 130,
+      "filename": "parlamento-andalucia-201203.zip",
+      "bytes": 19164883,
+      "sha256": "7c9451fdff8c2f6fb971ab3b2cc4b6f4d7ecc095b657941466e51fcc83226297",
+      "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-201203.zip"
+    },
+    {
+      "date": 200803,
+      "label": "9 de marzo de 2008",
+      "year": 2008,
+      "tables": 10367,
+      "quality": {
+        "ok": 10367
+      },
+      "failed_queries": 101,
+      "filename": "parlamento-andalucia-200803.zip",
+      "bytes": 15377962,
+      "sha256": "634d1a825649077af91debdcfdfbc75aa5a645f8db09b4b72cb06d3b1968f388",
+      "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-200803.zip"
+    },
+    {
+      "date": 200403,
+      "label": "14 de marzo de 2004",
+      "year": 2004,
+      "tables": 9620,
+      "quality": {
+        "ok": 9619,
+        "incompleto": 1
+      },
+      "failed_queries": 86,
+      "filename": "parlamento-andalucia-200403.zip",
+      "bytes": 14334601,
+      "sha256": "b72f19accea425d01d3e7664147bfdf19febf1708f68bb75f81ed773bda77c68",
+      "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-200403.zip"
+    },
+    {
+      "date": 200003,
+      "label": "12 de marzo de 2000",
+      "year": 2000,
+      "tables": 9179,
+      "quality": {
+        "ok": 9179
+      },
+      "failed_queries": 97,
+      "filename": "parlamento-andalucia-200003.zip",
+      "bytes": 13348094,
+      "sha256": "8e2d4943d57e5224023de0f50fea61875db281da61d91a0c6f089c6e55d34c92",
+      "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-200003.zip"
+    },
+    {
+      "date": 199603,
+      "label": "3 de marzo de 1996",
+      "year": 1996,
+      "tables": 7927,
+      "quality": {
+        "ok": 5116,
+        "inconsistente": 2811
+      },
+      "failed_queries": 95,
+      "filename": "parlamento-andalucia-199603.zip",
+      "bytes": 11594010,
+      "sha256": "a2048b916f70486a3469307cd63f71f38769364bc5c6496f9ececf6bda5ae964",
+      "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-199603.zip"
+    },
+    {
+      "date": 199406,
+      "label": "12 de junio de 1994",
+      "year": 1994,
+      "tables": 7580,
+      "quality": {
+        "ok": 7580
+      },
+      "failed_queries": 87,
+      "filename": "parlamento-andalucia-199406.zip",
+      "bytes": 11325932,
+      "sha256": "16975066447f9109b38be4eca3ce81c82049e61774b263c67611c2da3a2e61e4",
+      "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-199406.zip"
+    },
+    {
+      "date": 199006,
+      "label": "23 de junio de 1990",
+      "year": 1990,
+      "tables": 6652,
+      "quality": {
+        "ok": 6446,
+        "inconsistente": 205,
+        "incompleto": 1
+      },
+      "failed_queries": 122,
+      "filename": "parlamento-andalucia-199006.zip",
+      "bytes": 12675714,
+      "sha256": "9338a350ac33866d58d65a0d5243d348a1b0a2e1a65ed7749271621615df1f92",
+      "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-199006.zip"
+    },
+    {
+      "date": 198606,
+      "label": "22 de junio de 1986",
+      "year": 1986,
+      "tables": 6352,
+      "quality": {
+        "ok": 6320,
+        "incompleto": 32
+      },
+      "failed_queries": 148,
+      "filename": "parlamento-andalucia-198606.zip",
+      "bytes": 11065588,
+      "sha256": "a3b4eefb54e5c2c3fb3655efffc2e02afcdb000cd20f726427b5c96b98c7a0d0",
+      "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-198606.zip"
+    },
+    {
+      "date": 198205,
+      "label": "23 de mayo de 1982",
+      "year": 1982,
+      "tables": 6133,
+      "quality": {
+        "ok": 6126,
+        "incompleto": 7
+      },
+      "failed_queries": 140,
+      "filename": "parlamento-andalucia-198205.zip",
+      "bytes": 11401186,
+      "sha256": "aae5e3a427f3882e941d1f7ee3018a1eff524f51e4c811aaeb4b6d290b332e0a",
+      "url": "https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-198205.zip"
+    }
+  ],
+  "table_quality": {
+    "mesa/ok": 111878,
+    "cera/ok": 96,
+    "mesa/incompleto": 49,
+    "mesa/inconsistente": 3017,
+    "cera/incompleto": 8
+  }
+}

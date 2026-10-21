@@ -5,6 +5,21 @@ Andalucía** que muestra [resultadoseleccionesandalucia.es](https://resultadosel
 Consulta la API pública SIEL de la **Junta de Andalucía**, conserva sus respuestas
 originales y genera CSV. No utiliza scraping de las tablas de la web.
 
+## Descargar los datos ya recopilados
+
+**[Página de descargas: 13 elecciones, de 1982 a 2026](https://jesusmgodoy.github.io/andalucia-siel-api/)**
+
+Hay un ZIP por elección y otro con toda la serie en la
+[edición de datos de 21 de octubre de 2026](https://github.com/jesusmgodoy/andalucia-siel-api/releases/tag/datos-2026-10-21-v1).
+Incluyen CSV, respuestas estructuradas y documentación de calidad. No hace falta
+ejecutar el descargador. Esta publicación comprende únicamente el Parlamento de
+Andalucía y conserva incidencias del origen; no certifica integridad histórica.
+Consulta [la guía](docs/LEEME.md), [la calidad](docs/CALIDAD.md) y
+[las condiciones de reutilización](docs/REUTILIZACION.md).
+
+Los paquetes grandes se distribuyen como adjuntos de Releases y no forman parte
+del historial Git. [Cómo reproducir y publicar otra edición](docs/publicar-datasets.md).
+
 - API: <https://ws040.juntadeandalucia.es/siel-api>
 - Swagger: <https://ws040.juntadeandalucia.es/siel-api/swagger-ui.html>
 - Especificación: <https://ws040.juntadeandalucia.es/siel-api/api-docs>

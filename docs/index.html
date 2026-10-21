@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elecciones al Parlamento de Andalucía · Descarga de datos 1982–2026</title>
+<meta name="description" content="Descarga los datos SIEL de las 13 elecciones al Parlamento de Andalucía, de 1982 a 2026. Un ZIP por elección, archivo conjunto y controles de calidad.">
+<meta name="theme-color" content="#144b3e"><link rel="canonical" href="https://jesusmgodoy.github.io/andalucia-siel-api/">
+<style>
+:root{--ink:#182e29;--green:#144b3e;--muted:#53655f;--paper:#f5f6f0;--line:#dce3da}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:var(--green);text-underline-offset:4px}a:focus-visible,summary:focus-visible{outline:3px solid #b66a12;outline-offset:5px}.wrap{max-width:1180px;margin:auto;padding:0 32px}.skip{position:absolute;top:-80px;left:16px;background:white;padding:10px;z-index:2}.skip:focus{top:8px}header{border-bottom:1px solid var(--line)}nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{font-weight:750;text-decoration:none;letter-spacing:-.03em;font-size:19px}.navlinks{display:flex;gap:26px;font-size:14px}.navlinks a{text-decoration:none}.hero{padding:76px 0 52px;max-width:920px}.eyebrow{color:var(--green);font-size:12px;font-weight:750;letter-spacing:.15em;text-transform:uppercase;margin:0 0 19px}h1{font-size:clamp(36px,5.2vw,66px);line-height:1.08;letter-spacing:-.055em;font-weight:650;margin:0 0 25px;max-width:850px}.intro{max-width:700px;font-size:19px;color:var(--muted);margin:0 0 29px}.actions{display:flex;align-items:center;flex-wrap:wrap;gap:24px}.button{display:inline-flex;align-items:center;gap:24px;background:var(--green);color:white;border-radius:8px;padding:14px 20px;font-weight:650;text-decoration:none}.button small{font-weight:450;opacity:.9}.textlink{font-size:15px;font-weight:650}.stats{display:flex;gap:48px;padding:0 0 44px}.stat strong{display:block;font-size:26px;font-weight:650;letter-spacing:-.04em}.stat span{font-size:13px;color:var(--muted)}.notice{background:#f7edd6;border:1px solid #e3d4b4;border-radius:10px;padding:18px 22px;display:flex;align-items:baseline;gap:16px;margin-bottom:48px}.notice strong{white-space:nowrap}.notice p{font-size:14px;margin:0}.notice a{color:#62441c}.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:17px}h2{font-size:27px;line-height:1.3;letter-spacing:-.035em;margin:0}h3{font-size:22px;line-height:1.2;margin:0 0 5px;letter-spacing:-.025em}.section-head p{margin:0;font-size:13px;color:var(--muted)}.list{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:white}.election{display:grid;grid-template-columns:1.22fr .95fr 1.9fr 148px;gap:20px;align-items:center;padding:23px 25px}.election+.election{border-top:1px solid var(--line)}.election:hover{background:#fafbf7}.date{margin:0;font-size:12px;color:var(--muted)}.tables{font-size:13px}.tables strong{font-size:17px;font-weight:600}.tables span{color:var(--muted)}.badges{display:flex;align-items:start;flex-wrap:wrap;gap:6px}.badge{display:inline-block;border-radius:5px;padding:3px 8px;font-size:11px;line-height:1.6}.ok{background:#edf3ec;color:#2e5437}.inconsistente{background:#fff0d5;color:#785019}.incompleto{background:#fbe9e3;color:#843e2d}.download{text-decoration:none;border:1px solid #c8d5ca;border-radius:7px;padding:9px 12px;font-size:13px;font-weight:650;display:block}.download span{display:block;font-size:11px;font-weight:450;color:var(--muted);margin-top:2px}.download:hover{background:#eaf1e7;border-color:#7d9f86}.help{padding:58px 0 20px;display:grid;grid-template-columns:1fr 1fr;gap:52px}.help p,.help li{color:var(--muted);font-size:14px}.help ol{padding-left:21px}.help li+li{margin-top:10px}code{background:#e8ede5;border-radius:3px;padding:2px 5px;font:12px ui-monospace,monospace}.small-links{display:flex;flex-wrap:wrap;gap:18px;font-size:13px;margin-top:18px}.quality-box{background:white;border:1px solid var(--line);border-radius:10px;padding:24px}.quality-box h2{font-size:22px}.quality-box ul{padding-left:20px}.quality-box p:last-child{margin-bottom:0}footer{margin-top:46px;border-top:1px solid var(--line);padding:27px 0 35px;color:var(--muted);font-size:12px}footer p{margin:4px 0;max-width:900px}.footerlinks{display:flex;gap:22px;flex-wrap:wrap;margin-top:14px}summary{cursor:pointer;font-weight:650;font-size:14px}details{margin-top:18px}details p{margin-bottom:0}
+@media(max-width:900px){.election{grid-template-columns:1fr .9fr 1.5fr 135px;gap:12px;padding:22px 18px}.tables span{display:block}.notice{display:block}.notice p{margin-top:5px}.stats{gap:32px}}
+@media(max-width:650px){.wrap{padding:0 20px}nav{min-height:70px}.brand{font-size:16px}.navlinks{gap:15px;font-size:12px}.navlinks .optional{display:none}.hero{padding:45px 0 32px}.intro{font-size:17px}.stats{gap:24px;justify-content:space-between;padding-bottom:30px}.stat strong{font-size:23px}.stat span{font-size:11px}.notice{margin-bottom:32px;padding:15px 17px}.section-head{display:block}.section-head p{margin-top:6px}.election{grid-template-columns:1fr 135px;padding:21px 18px;gap:12px 16px}.election .tables{grid-column:1;font-size:12px}.tables span{display:inline}.badges{grid-column:1 / -1;grid-row:3}.download{grid-column:2;grid-row:1 / 3;align-self:center}.help{padding-top:36px;grid-template-columns:1fr;gap:28px}.quality-box{padding:20px}.actions{gap:18px}h2{font-size:25px}footer{margin-top:30px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#descargas">Ir a las descargas</a>
+<header><nav class="wrap" aria-label="Navegación principal"><a class="brand" href="./">Andalucía · Datos electorales</a><div class="navlinks"><a href="#descargas">Descargas</a><a href="#guia">Guía</a><a class="optional" href="https://github.com/jesusmgodoy/andalucia-siel-api">Código ↗</a></div></nav></header>
+<main class="wrap">
+<section class="hero" aria-labelledby="titulo"><p class="eyebrow">Archivo del SIEL · 1982–2026</p><h1 id="titulo">Elecciones al Parlamento<br>de Andalucía</h1><p class="intro">Los resultados disponibles, reunidos en un archivo abierto y documentado. Descarga una elección o la serie completa, con sus fuentes y controles de calidad.</p><div class="actions"><a class="button" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-1982-2026.zip">Descargar las 13 elecciones <small>ZIP · 191,6 MB ↓</small></a><a class="textlink" href="#guia">Cómo utilizar los datos</a></div></section>
+<div class="stats" aria-label="Contenido de la edición"><div class="stat"><strong>13</strong><span>elecciones</span></div><div class="stat"><strong>114.944</strong><span>mesas catalogadas</span></div><div class="stat"><strong>21 oct. 2026</strong><span>edición de datos</span></div></div>
+<aside class="notice"><strong>Consulta la calidad</strong><p>La descarga conserva las incidencias del origen: hay registros incompletos y cifras que no concilian. Los datos ausentes no se han rellenado con ceros. <a href="#calidad">Ver las limitaciones</a>.</p></aside>
+<section id="descargas" aria-labelledby="descargas-titulo"><div class="section-head"><h2 id="descargas-titulo">Descargar por elección</h2><p>CSV y respuestas de origen · Guía y calidad incluidas en cada ZIP</p></div><div class="list"><article class="election" aria-labelledby="e202605">
+          <div><h3 id="e202605">2026</h3><p class="date">17 de mayo de 2026</p></div>
+          <div class="tables"><strong>10.403</strong><span> mesas catalogadas</span></div>
+          <div class="badges"><span class="badge ok">10.403 sin incidencias detectadas</span></div>
+          <a class="download" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-202605.zip" aria-label="Descargar elección de 2026 en ZIP">Descargar ZIP <span>↓ &nbsp; 17,9 MB</span></a>
+        </article>
+<article class="election" aria-labelledby="e202206">
+          <div><h3 id="e202206">2022</h3><p class="date">19 de junio de 2022</p></div>
+          <div class="tables"><strong>10.189</strong><span> mesas catalogadas</span></div>
+          <div class="badges"><span class="badge ok">10.185 sin incidencias detectadas</span><span class="badge incompleto">4 incompletas</span></div>
+          <a class="download" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-202206.zip" aria-label="Descargar elección de 2022 en ZIP">Descargar ZIP <span>↓ &nbsp; 18,2 MB</span></a>
+        </article>
+<article class="election" aria-labelledby="e201812">
+          <div><h3 id="e201812">2018</h3><p class="date">2 de diciembre de 2018</p></div>
+          <div class="tables"><strong>10.038</strong><span> mesas catalogadas</span></div>
+          <div class="badges"><span class="badge ok">10.035 sin incidencias detectadas</span><span class="badge inconsistente">1 inconsistente</span><span class="badge incompleto">2 incompletas</span></div>
+          <a class="download" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-201812.zip" aria-label="Descargar elección de 2018 en ZIP">Descargar ZIP <span>↓ &nbsp; 17,5 MB</span></a>
+        </article>
+<article class="election" aria-labelledby="e201503">
+          <div><h3 id="e201503">2015</h3><p class="date">22 de marzo de 2015</p></div>
+          <div class="tables"><strong>9.873</strong><span> mesas catalogadas</span></div>
+          <div class="badges"><span class="badge ok">9.871 sin incidencias detectadas</span><span class="badge incompleto">2 incompletas</span></div>
+          <a class="download" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-201503.zip" aria-label="Descargar elección de 2015 en ZIP">Descargar ZIP <span>↓ &nbsp; 16,9 MB</span></a>
+        </article>
+<article class="election" aria-labelledby="e201203">
+          <div><h3 id="e201203">2012</h3><p class="date">25 de marzo de 2012</p></div>
+          <div class="tables"><strong>10.631</strong><span> mesas catalogadas</span></div>
+          <div class="badges"><span class="badge ok">10.631 sin incidencias detectadas</span></div>
+          <a class="download" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-201203.zip" aria-label="Descargar elección de 2012 en ZIP">Descargar ZIP <span>↓ &nbsp; 19,2 MB</span></a>
+        </article>
+<article class="election" aria-labelledby="e200803">
+          <div><h3 id="e200803">2008</h3><p class="date">9 de marzo de 2008</p></div>
+          <div class="tables"><strong>10.367</strong><span> mesas catalogadas</span></div>
+          <div class="badges"><span class="badge ok">10.367 sin incidencias detectadas</span></div>
+          <a class="download" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-200803.zip" aria-label="Descargar elección de 2008 en ZIP">Descargar ZIP <span>↓ &nbsp; 15,4 MB</span></a>
+        </article>
+<article class="election" aria-labelledby="e200403">
+          <div><h3 id="e200403">2004</h3><p class="date">14 de marzo de 2004</p></div>
+          <div class="tables"><strong>9.620</strong><span> mesas catalogadas</span></div>
+          <div class="badges"><span class="badge ok">9.619 sin incidencias detectadas</span><span class="badge incompleto">1 incompleta</span></div>
+          <a class="download" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-200403.zip" aria-label="Descargar elección de 2004 en ZIP">Descargar ZIP <span>↓ &nbsp; 14,3 MB</span></a>
+        </article>
+<article class="election" aria-labelledby="e200003">
+          <div><h3 id="e200003">2000</h3><p class="date">12 de marzo de 2000</p></div>
+          <div class="tables"><strong>9.179</strong><span> mesas catalogadas</span></div>
+          <div class="badges"><span class="badge ok">9.179 sin incidencias detectadas</span></div>
+          <a class="download" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-200003.zip" aria-label="Descargar elección de 2000 en ZIP">Descargar ZIP <span>↓ &nbsp; 13,3 MB</span></a>
+        </article>
+<article class="election" aria-labelledby="e199603">
+          <div><h3 id="e199603">1996</h3><p class="date">3 de marzo de 1996</p></div>
+          <div class="tables"><strong>7.927</strong><span> mesas catalogadas</span></div>
+          <div class="badges"><span class="badge ok">5.116 sin incidencias detectadas</span><span class="badge inconsistente">2.811 inconsistentes</span></div>
+          <a class="download" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-199603.zip" aria-label="Descargar elección de 1996 en ZIP">Descargar ZIP <span>↓ &nbsp; 11,6 MB</span></a>
+        </article>
+<article class="election" aria-labelledby="e199406">
+          <div><h3 id="e199406">1994</h3><p class="date">12 de junio de 1994</p></div>
+          <div class="tables"><strong>7.580</strong><span> mesas catalogadas</span></div>
+          <div class="badges"><span class="badge ok">7.580 sin incidencias detectadas</span></div>
+          <a class="download" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-199406.zip" aria-label="Descargar elección de 1994 en ZIP">Descargar ZIP <span>↓ &nbsp; 11,3 MB</span></a>
+        </article>
+<article class="election" aria-labelledby="e199006">
+          <div><h3 id="e199006">1990</h3><p class="date">23 de junio de 1990</p></div>
+          <div class="tables"><strong>6.652</strong><span> mesas catalogadas</span></div>
+          <div class="badges"><span class="badge ok">6.446 sin incidencias detectadas</span><span class="badge inconsistente">205 inconsistentes</span><span class="badge incompleto">1 incompleta</span></div>
+          <a class="download" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-199006.zip" aria-label="Descargar elección de 1990 en ZIP">Descargar ZIP <span>↓ &nbsp; 12,7 MB</span></a>
+        </article>
+<article class="election" aria-labelledby="e198606">
+          <div><h3 id="e198606">1986</h3><p class="date">22 de junio de 1986</p></div>
+          <div class="tables"><strong>6.352</strong><span> mesas catalogadas</span></div>
+          <div class="badges"><span class="badge ok">6.320 sin incidencias detectadas</span><span class="badge incompleto">32 incompletas</span></div>
+          <a class="download" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-198606.zip" aria-label="Descargar elección de 1986 en ZIP">Descargar ZIP <span>↓ &nbsp; 11,1 MB</span></a>
+        </article>
+<article class="election" aria-labelledby="e198205">
+          <div><h3 id="e198205">1982</h3><p class="date">23 de mayo de 1982</p></div>
+          <div class="tables"><strong>6.133</strong><span> mesas catalogadas</span></div>
+          <div class="badges"><span class="badge ok">6.126 sin incidencias detectadas</span><span class="badge incompleto">7 incompletas</span></div>
+          <a class="download" href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/download/datos-2026-10-21-v1/parlamento-andalucia-198205.zip" aria-label="Descargar elección de 1982 en ZIP">Descargar ZIP <span>↓ &nbsp; 11,4 MB</span></a>
+        </article></div></section>
+<section class="help" id="guia" aria-label="Guía de uso y calidad">
+<div><p class="eyebrow">Antes de analizar</p><h2>Un archivo que se puede comprobar</h2><ol><li><strong>Elige una convocatoria y descomprime el ZIP.</strong> Los CSV interiores están comprimidos en gzip; conservan las columnas y los nombres de las candidaturas.</li><li><strong>Empieza por el CSV conjunto de la elección.</strong> Incluye mesas y voto exterior provincial, diferenciados por <code>tipo_registro</code>. También hay tablas en formato largo y respuestas JSON.</li><li><strong>Revisa <code>estado_calidad</code>.</strong> Para seleccionar registros sin incidencias detectadas, filtra por <code>ok</code>. Documenta las exclusiones: pueden afectar al análisis.</li></ol><div class="small-links"><a href="LEEME.md">Guía completa (.md)</a><a href="catalogo.json">Catálogo y hashes (.json)</a><a href="https://github.com/jesusmgodoy/andalucia-siel-api/releases/tag/datos-2026-10-21-v1">Archivos de esta edición ↗</a></div><details><summary>Cómo comprobar una descarga</summary><p>Cada ZIP tiene un SHA-256 en el catálogo. La publicación incluye <code>SHA256SUMS.txt</code> para comprobar que los archivos descargados coinciden con esta edición.</p></details></div>
+<aside class="quality-box" id="calidad"><p class="eyebrow">Límites documentados</p><h2>Disponibilidad no equivale a validación</h2><ul><li><strong>41 mesas sin escrutinio válido.</strong> Sus resúmenes a cero no acreditan una abstención total.</li><li><strong>8 mesas adicionales con valores inválidos</strong> en los resúmenes.</li><li><strong>3.017 mesas con diferencias aritméticas</strong> entre la suma de candidaturas y el total declarado.</li><li><strong>8 registros provinciales CERA incompletos</strong> de 1982.</li></ul><p>El archivo conserva los originales y las advertencias. No certifica integridad histórica. Una comprobación <code>ok</code> tampoco sustituye al contraste con actas.</p><p><a href="CALIDAD.md">Leer el informe de calidad (.md)</a></p></aside>
+</section></main>
+<footer><div class="wrap"><p><strong>Información obtenida del Portal de la Junta de Andalucía.</strong> Fuente: <a href="https://resultadoseleccionesandalucia.es/">Sistema de Información Electoral (SIEL)</a>.</p><p>Edición independiente de <a href="https://github.com/jesusmgodoy">Jesus M. Godoy</a>, preparada con andalucia-siel-api. Esta publicación comprende únicamente elecciones al Parlamento de Andalucía.</p><div class="footerlinks"><a href="REUTILIZACION.md">Fuentes y reutilización</a><a href="https://github.com/jesusmgodoy/andalucia-siel-api">Código y metodología</a><a href="https://github.com/jesusmgodoy/andalucia-siel-api/issues">Comunicar una incidencia</a><span>datos-2026-10-21-v1</span></div></div></footer>
+</body></html>
