@@ -59,6 +59,12 @@ def assess_record(record: dict[str, Any]) -> dict[str, Any]:
         total = sum(v["numvotos"] for v in votes)
         if total != summary.get("votoscandidatura"):
             issues.append(f"suma de candidaturas={total} != votoscandidatura={summary.get('votoscandidatura')}")
+    # Older archives synthesized an empty scrutiny from a zero summary after
+    # HTTP failure. Keep those bytes, but never certify the fabricated vote list.
+    if (record.get("estado_descarga") == "ok_sin_votos"
+            and any("escrutinio" in str(e.get("endpoint", "")) for e in (record.get("errors") or []) if isinstance(e, dict))):
+        incomplete = True
+        issues.append("resumen a cero sin escrutinio original; cero real no verificado")
     if record.get("estado_descarga", "ok") not in {"ok", "ok_sin_votos"}:
         incomplete = True
     state = "incompleto" if incomplete else "inconsistente" if issues else "ok"

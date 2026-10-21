@@ -115,12 +115,55 @@ publicación; reanudar reconstruye la exportación que no alcanzó su punto de c
 `stage=core` y `archive_finished=false` indican una exportación anticipada que
 todavía no incluye todas las vistas. `stage=final` indica que terminó el recorrido
 y su presupuesto de reintentos. `_completo` y `catalog_coverage_complete` requieren
-catálogo sin ramas inaccesibles y coincidencia con `nummesas` del agregado de
-Andalucía. `mesa_data_complete` exige además ambas respuestas de cada mesa;
+catálogo sin ramas inaccesibles, sin discrepancias municipales y coincidencia
+con `nummesas` del agregado de Andalucía o con una referencia oficial de mesas
+físicas, comprobada también provincia por provincia. Las referencias de 2018 y
+2022 están en `references/mesas_fisicas.json`; no se resta ocho automáticamente
+ni se presupone que el agregado incluya CERA. `mesa_data_complete` exige además ambas respuestas de cada mesa;
 `data_complete` exige finalización y ninguna consulta archivada no disponible.
 Estas marcas no certifican la coherencia aritmética del origen. Los CSV reutilizan
 los controles de calidad del descargador de mesas, sin corregir ni imputar votos.
 El combinado añade CERA provincial y excluye el CERA agregado para evitar duplicarlo.
+
+## Reparar un archivo terminado
+
+```sh
+python3 scripts/archive_siel.py --output ./data --repair
+```
+
+Reexporta los archivos derivados y actualiza sus manifiestos e
+`incidencias_origen.json`, sin volver a consultar la red. Mantiene las respuestas
+originales, sus hashes, los registros de intentos y la fecha original de
+finalización; añade `repaired_at` y registra la operación en `repair.json`.
+Necesita `plan.json`, `finished.json` y los metadatos previamente archivados.
+
+La reparación distingue fallos HTTP, tiempos de espera y consultas municipales
+fallidas cuyo catálogo de distritos está vacío. Este último estado se llama
+`municipio_sin_desglose_en_api`: es evidencia de que esa selección no ofrece
+detalle, no una afirmación de que el municipio no existiera ni una respuesta
+satisfactoria inventada. Los fallos originales siguen contándose y disponibles.
+
+Si falta el escrutinio y el resumen declara cero votos, el registro se marca
+`resumen_cero_sin_escrutinio`, con calidad incompleta y votos por candidatura
+desconocidos. Los ceros originales del resumen se mantienen, pero no se crea una
+lista de votos ficticia ni se interpreta el fallo como abstención total real.
+Los lectores aplican también este control a antiguos `ok_sin_votos` que conservan
+un error de escrutinio. Un cero procedente de respuestas satisfactorias sigue
+siendo válido. Ninguna entrada anómala se elimina automáticamente del catálogo.
+
+Se pueden reintentar rutas concretas de resultados antes de reparar:
+
+```sh
+python3 scripts/archive_siel.py --output ./data --repair \
+  --retry-path /v1/escrutinio/ambito/mesa --retry-limit 10 --timeout 90
+```
+
+Este ejemplo hace como máximo diez consultas, una vez cada una, incluso si
+agotaron el presupuesto anterior. Las respuestas correctas no se repiten; el
+historial y el contador de intentos se conservan. `--retry-path` admite varias
+rutas exactas de resultados. No reenumera catálogos. Un fallo persistente sigue
+siendo un fallo, y `repair.json` diferencia los intentos de las recuperaciones.
+La opción no está activada en la unidad de servicio normal.
 
 ## Servicio en una VPS
 

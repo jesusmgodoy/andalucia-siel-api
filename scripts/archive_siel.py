@@ -133,6 +133,8 @@ class Archive:
         self.paths = {}
         self.current = {'state': 'starting'}
         self.started = now()
+        reference_file = PROJECT_ROOT / 'references/mesas_fisicas.json'
+        self.coverage_references = json.loads(reference_file.read_text()) if reference_file.exists() else {}
 
     def disk_check(self):
         if shutil.disk_usage(self.out).free < self.reserve:
@@ -224,7 +226,7 @@ class Archive:
             raise SourceUnavailable(f'{row["url"]}: catálogo con estructura inesperada')
         return data
 
-    def fetch(self, path, params=None, catalog=False, retry=False, refresh=False):
+    def fetch(self, path, params=None, catalog=False, retry=False, refresh=False, extra_attempt=False):
         params = params or {}
         if path.startswith('/v1/') and self.paths and path not in self.paths:
             return [] if catalog else None
@@ -233,7 +235,7 @@ class Archive:
         # unbounded lock dictionary. Successful cached responses never hit HTTP.
         with self.query_locks[int(key[:8], 16) % len(self.query_locks)]:
             row = self.row(path, p)
-            if row and not refresh and (row['ok'] or (row['attempts'] > 0 and (not retry
+            if row and not refresh and (row['ok'] or (not extra_attempt and row['attempts'] > 0 and (not retry
                         or row['attempts'] >= self.max_attempts or row['status'] in PERMANENT_HTTP))):
                 return self.result(row, catalog)
             self.check_stop()
@@ -569,8 +571,7 @@ class Archive:
         if result['errors']:
             result['estado_descarga'] = 'cera_no_disponible' if cera else 'mesa_no_disponible' if not result['resumen'] else 'escrutinio_no_disponible'
             if not cera and result['resumen'].get('votostotales') == 0 and result['resumen'].get('votoscandidatura') == 0:
-                result['estado_descarga'] = 'ok_sin_votos'
-                result['escrutinio'] = {'idescrutinio': result['resumen'].get('idescrutinio'), 'votos': []}
+                result['estado_descarga'] = 'resumen_cero_sin_escrutinio'
         return result
 
     def export_election(self, t, f, provinces, stage='final'):
@@ -627,11 +628,13 @@ class Archive:
                        'provincia_nombre': province['valor'] if province else None}
                 handle.write(canonical(self.record_pair(scope, params, ctx, cera=True)) + '\n')
         stats = self.totals(t, f)
-        summary = self.row('/v1/resumen/cautonoma', base)
-        data = self.result(summary) if summary else None
-        expected = data.get('nummesas') if isinstance(data, dict) else None
+        from andalucia_siel.archive_audit import reconcile_coverage, failure_report
+        coverage = reconcile_coverage(self.db, self.result, t, f, self.coverage_references)
+        issues = failure_report(self.db, self.result, self.identity, t, f)
+        atomic_json(folder / 'incidencias_origen.json', issues)
+        expected = coverage['aggregate_count']
         mesa_count = stats['nodes'].get('mesa', 0)
-        complete = stats['unavailable_catalog_branches'] == 0 and mesa_count > 0 and isinstance(expected, int) and mesa_count == expected
+        complete = coverage['catalog_coverage_complete']
         combined = folder / f'andalucia_t{t}_{f}_{"completo" if complete else "parcial"}.csv'
         rows = dm.write_complete_csv(mesas_path, cera_path, combined)
         # Keep the user-facing CSVs compressed too.
@@ -647,6 +650,8 @@ class Archive:
         self.export_tabular(t, f, folder)
         manifest = {'tconvocatoria': t, 'fconvocatoria': f, 'generated_at': now(), **stats,
                     'stage': stage, 'archive_finished': stage == 'final',
+                    'coverage_reconciliation': coverage, 'source_issue_counts': issues['by_category'],
+                    'exporter_commit': subprocess.run(['git', '-C', str(PROJECT_ROOT), 'rev-parse', 'HEAD'], capture_output=True, text=True).stdout.strip(),
                     'mesa_data_complete': complete and stats['mesas_completed'] == mesa_count,
                     'data_complete': stage == 'final' and complete and stats['source_unavailable'] == 0
                                      and stats['mesas_completed'] == mesa_count,
@@ -708,6 +713,55 @@ class Archive:
                     else:
                         vw.writerow(base)
 
+    def repair(self, retry_paths=(), retry_limit=25):
+        """Re-export an existing finished archive; optionally retry selected results once."""
+        self.disk_check()
+        plan_path = self.out / 'plan.json'
+        finished_path = self.out / 'finished.json'
+        if not plan_path.exists() or not finished_path.exists():
+            raise ValueError('--repair requiere un archivo terminado con plan.json y finished.json')
+        plan = json.loads(plan_path.read_text())
+        finished = json.loads(finished_path.read_text())
+        doc_row = self.row('/api-docs', {})
+        doc = self.result(doc_row)
+        if not isinstance(doc, dict) or 'paths' not in doc:
+            raise ValueError('No se ha archivado una especificación válida; no se conecta a la red en modo reparación')
+        self.paths = {p: m['get'] for p, m in doc['paths'].items() if 'get' in m}
+        self.backfill_node_requests()
+        provinces_row = self.row('/v1/opciones/provincia', {'cautonoma': 1})
+        provinces = self.result(provinces_row, catalog=True)
+        attempted = 0
+        recovered = 0
+        if retry_paths:
+            if any(not path.startswith(('/v1/resumen/', '/v1/escrutinio/')) and path != '/v1/celectos' for path in retry_paths):
+                raise ValueError('Solo se pueden reintentar rutas de resultados; los catálogos requieren el recorrido normal')
+            placeholders = ','.join('?' for _ in retry_paths)
+            rows = self.db.execute(f'SELECT * FROM responses WHERE ok=0 AND path IN ({placeholders}) ORDER BY key LIMIT ?',
+                                   (*retry_paths, retry_limit)).fetchall()
+            self.current = {'state': 'downloading', 'phase': 'repair_retries'}
+            self.progress()
+            def work(row):
+                self.fetch(row['path'], json.loads(row['params']), retry=True, extra_attempt=True)
+                return []
+            self.drain(rows, work)
+            attempted = len(rows)
+            recovered = sum(bool(self.row(row['path'], json.loads(row['params']))['ok']) for row in rows)
+        for t, f in plan['elections']:
+            self.check_stop()
+            self.export_election(t, f, provinces)
+        from andalucia_siel.archive_audit import failure_report
+        issues = failure_report(self.db, self.result, self.identity)
+        atomic_json(self.out / 'incidencias_origen.json', issues)
+        finished.update(self.totals())
+        finished['repaired_at'] = now()
+        atomic_json(finished_path, finished)
+        atomic_json(self.out / 'repair.json', {'repaired_at': now(), 'retried': attempted,
+                    'recovered': recovered, 'failed_queries': issues['failed_queries'],
+                    'source_issue_counts': issues['by_category'], 'offline': not bool(retry_paths)})
+        self.current = {'state': 'finished', 'phase': 'finished', 'mode': 'repair',
+                        'source_issue_counts': issues['by_category'], 'elections': len(plan['elections'])}
+        self.progress()
+
     def run(self, retry_unavailable=False, refresh_catalogs=False):
         self.disk_check()
         if retry_unavailable:
@@ -761,7 +815,11 @@ class Archive:
         for t, f in elections:
             if not self.phase_done(t, f, 'final_export'):
                 self.export_election(t, f, provinces)
-        self.current = {'state': 'finished', 'phase': 'finished', 'elections': len(elections)}
+        from andalucia_siel.archive_audit import failure_report
+        issues = failure_report(self.db, self.result, self.identity)
+        atomic_json(self.out / 'incidencias_origen.json', issues)
+        self.current = {'state': 'finished', 'phase': 'finished', 'elections': len(elections),
+                        'source_issue_counts': issues['by_category']}
         self.progress()
         atomic_json(self.out / 'finished.json', {'finished_at': now(), 'elections': elections, **self.totals(),
                                                'note': 'Consultar los manifiestos y los errores de origen en SQLite.'})
@@ -780,6 +838,8 @@ def show_status(output):
     print(f"Mesas con ambas respuestas: {totals.get('mesas_completed', '?')} / {totals['nodes'].get('mesa', 0)} identificadas")
     print(f"Consultas: {totals['queries']} | Correctas: {totals['ok']} | No disponibles: {totals['source_unavailable']}")
     print(f"Reintentos pendientes: {totals.get('retry_pending', '?')}")
+    for category, count in data.get('source_issue_counts', {}).items():
+        print(f"  {category}: {count}")
     phases = data.get('phases', [])
     print(f"Convocatorias con datos principales exportados: {sum(p['phase'] == 'core_export' for p in phases)}")
     print(f"Convocatorias finalizadas: {sum(p['phase'] == 'final_export' for p in phases)}")
@@ -791,6 +851,9 @@ def show_status(output):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--repair', action='store_true', help='Reexportar un archivo terminado sin repetir descargas')
+    parser.add_argument('--retry-path', action='append', default=[], help='En reparación, ruta exacta de resultados fallidos que reintentar una vez')
+    parser.add_argument('--retry-limit', type=int, default=25, help='Máximo de consultas de reparación; predeterminado: 25')
     parser.add_argument('--status', action='store_true', help='Mostrar progreso guardado sin conectar a la API')
     parser.add_argument('--workers', type=int, default=6)
     parser.add_argument('--max-rps', type=float, default=6)
@@ -805,6 +868,12 @@ def main():
     if args.status:
         show_status(args.output)
         return
+    if args.retry_path and not args.repair:
+        parser.error('--retry-path requiere --repair')
+    if args.retry_limit < 1:
+        parser.error('--retry-limit debe ser positivo')
+    if args.repair and (args.retry_unavailable or args.refresh_catalogs):
+        parser.error('--repair no admite --retry-unavailable ni --refresh-catalogs')
     os.umask(0o077)
     args.output.mkdir(parents=True, exist_ok=True)
     handle = (args.output / '.download.lock').open('a')
@@ -826,7 +895,10 @@ def main():
     heartbeat_thread = threading.Thread(target=heartbeat, daemon=True)
     heartbeat_thread.start()
     try:
-        archive.run(args.retry_unavailable, args.refresh_catalogs)
+        if args.repair:
+            archive.repair(args.retry_path, args.retry_limit)
+        else:
+            archive.run(args.retry_unavailable, args.refresh_catalogs)
     except StopRequested:
         archive.current['state'] = 'stopped'
         archive.progress()

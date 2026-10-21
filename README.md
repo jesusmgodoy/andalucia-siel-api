@@ -127,6 +127,12 @@ reutilizan conexiones y consultas; la compresión se realiza fuera del bloqueo d
 SQLite. El límite de peticiones y `Retry-After` evitan acelerar a costa de repetir
 errores de saturación. La latencia del origen puede seguir limitando el ritmo.
 
+Para actualizar los derivados de un archivo exhaustivo ya terminado sin hacer
+peticiones, usa `python3 scripts/archive_siel.py --output ./data --repair`.
+La reparación separa las consultas sin desglose, conserva los fallos originales y
+contrasta la cobertura con referencias oficiales cuando existen. Los reintentos
+selectivos son explícitos y acotados; véase la documentación del archivo.
+
 ## Reanudación y ámbito
 
 ```sh
@@ -210,8 +216,10 @@ La auditoría de octubre de 2026 encontró diferencias en agregados de 1990
 (54 votos), tres mesas muestreadas de 1996 (1, 1 y 190 votos) y agregados de 2018
 (17 votantes frente a válidos+nulos). No es una lista exhaustiva de incidencias.
 El CERA de 1982 devuelve HTTP 500; se conservan filas provinciales con
-`cera_no_disponible` y votos desconocidos vacíos. Si un resumen de mesa acredita
-cero votos y falla el escrutinio, se conserva como `ok_sin_votos`. Si faltan votos
+`cera_no_disponible` y votos desconocidos vacíos. Si un resumen de mesa declara
+cero votos y falla el escrutinio, se marca `resumen_cero_sin_escrutinio`: no se
+certifica una abstención total ni se imputan votos por candidatura. Los antiguos
+`ok_sin_votos` con errores también se marcan incompletos al exportar. Si faltan votos
 por candidatura en una mesa no vacía, se marca `escrutinio_no_disponible`.
 
 En 2026, el censo total del SIEL incluye CERA. Para comparar participación con

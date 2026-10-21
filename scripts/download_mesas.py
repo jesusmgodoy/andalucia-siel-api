@@ -368,38 +368,15 @@ def download_mesa(client: SielClient, context: dict[str, Any]) -> dict[str, Any]
         detail = {"endpoint": "escrutinio/ambito/mesa", **api_error_detail(exc)}
         votos_candidatura = resumen.get("votoscandidatura")
         votos_totales = resumen.get("votostotales")
-        if votos_candidatura == 0 and votos_totales == 0:
-            record.update(
-                {
-                    "escrutinio": {
-                        "descripcion": (
-                            "La API devolvió error en escrutinio/mesa, pero resumen/mesa indica "
-                            "cero votos totales y cero votos a candidaturas."
-                        ),
-                        "distribucion": "ambito",
-                        "idescrutinio": resumen.get("idescrutinio"),
-                        "nombreconjunto": "Formación política",
-                        "votos": [],
-                    },
-                    "fuente_registro": "api_resumen_mesa",
-                    "estado_descarga": "ok_sin_votos",
-                    "errors": [detail],
-                    "error_descarga": (
-                        "escrutinio/ambito/mesa no disponible; resumen/mesa indica "
-                        "votostotales=0 y votoscandidatura=0"
-                    ),
-                }
-            )
-        else:
-            record.update(
-                {
-                    "escrutinio": {"votos": []},
-                    "fuente_registro": "api_resumen_mesa_parcial",
-                    "estado_descarga": "escrutinio_no_disponible",
-                    "errors": [detail],
-                    "error_descarga": error_text([detail]),
-                }
-            )
+        record.update(
+            {
+                "escrutinio": {},
+                "fuente_registro": "api_resumen_mesa_parcial",
+                "estado_descarga": "resumen_cero_sin_escrutinio" if votos_candidatura == 0 and votos_totales == 0 else "escrutinio_no_disponible",
+                "errors": [detail],
+                "error_descarga": error_text([detail]),
+            }
+        )
         return record
 
 

@@ -1,0 +1,14 @@
+{
+  "5/201812": {
+    "total": 10038,
+    "provinces": {"4": 803, "11": 1489, "14": 907, "18": 1095, "21": 632, "23": 886, "29": 1662, "41": 2564},
+    "source": "https://www.juntadeandalucia.es/presidencia/portavoz/administracionobsoleto/139086/elecciones/comicios/Andalucia/2D/Parlamento/voto/votantes/electores",
+    "published_at": "2018-12-01"
+  },
+  "5/202206": {
+    "total": 10189,
+    "provinces": {"4": 808, "11": 1523, "14": 943, "18": 1110, "21": 653, "23": 889, "29": 1690, "41": 2573},
+    "source": "https://www.juntadeandalucia.es/presidencia/portavoz/gobiernoaldia/173154/Eleccionesandaluzas/19J/EliasBendodo/Dispositivoelectoral",
+    "published_at": "2022-06-17"
+  }
+}
